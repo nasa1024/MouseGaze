@@ -9,6 +9,6 @@ app = FastAPI()
 # 探活接口
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "Hello MOUSE!"}
 
 app.include_router(xgb_router, prefix="/xgb", tags=["xgb"])

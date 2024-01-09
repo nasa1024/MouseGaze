@@ -5,6 +5,16 @@
 
 ===
 
+## Structure
+
+```bash
+├─app 项目主体
+├─cmd 项目入口
+├─controller 业务逻辑层
+├─model 数据模型层
+└─resource 模型文件
+```
+
 
 ## Release History
 

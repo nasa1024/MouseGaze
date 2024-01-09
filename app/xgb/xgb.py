@@ -21,7 +21,7 @@ async def read_root(data: List[int]) -> list:
 
     np_data = np.array(data)
     y_pred = loaded_model.predict(np_data)
-    encoder = joblib.load('label_encoder.joblib')
+    encoder = joblib.load('../../resource/label_encoder.joblib')
     predictions = encoder.inverse_transform([round(value) for value in y_pred])
 
     return predictions

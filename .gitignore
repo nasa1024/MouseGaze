@@ -1,6 +1,10 @@
 *.joblib
-*.json
+resource/*.json
 
 # python
 *.pyc
 __pycache__/
+
+# ide
+.idea/
+.vscode/

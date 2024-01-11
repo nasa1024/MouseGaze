@@ -6,6 +6,22 @@ const TradeChart = () => {
     const chartContainerRef = useRef(null);
     const chartRef = useRef<IChartApi | null>(null);
 
+
+    function generateVolumeTestData() {
+        const testData = [];
+        const startDate = new Date('2018-10-22');
+        const endDate = new Date('2018-12-07');
+
+        for (let d = startDate; d <= endDate; d.setDate(d.getDate() + 1)) {
+            testData.push({
+                time: d.toISOString().split('T')[0],
+                value: Math.floor(Math.random() * (20000000 - 10000000 + 1)) + 10000000,
+            });
+        }
+
+        return testData;
+    }
+
     useEffect(() => {
         const resizeObserver = new ResizeObserver(entries => {
             for (let entry of entries) {
@@ -25,16 +41,41 @@ const TradeChart = () => {
                                 color: 'rgba(171, 71, 188, 0.5)',
                                 text: 'Watermark Example',
                             },
+                            layout: {
+                                background: {
+                                    // type: 'solid',
+                                    color: '#131722',
+                                },
+                                textColor: '#d1d4dc',
+                            },
+                            grid: {
+                                vertLines: {
+                                    color: 'transparent',
+                                },
+                                horzLines: {
+                                    color: 'transparent',
+                                },
+                            },
                         });
                         const candlestickSeries = chartRef.current.addCandlestickSeries(
                             {
-                                upColor: '#EF5350',
-                                downColor: '#26A69A',
+                                upColor: '#26A69A',
+                                downColor: '#EF5350',
                                 borderVisible: false,
-                                wickUpColor: '#EF5350',
-                                wickDownColor: '#26A69A'
+                                wickUpColor: '#26A69A',
+                                wickDownColor: '#EF5350'
                             }
                         );
+
+                        const volumeSeries = chartRef.current.addHistogramSeries({
+                            color: '#26a69a',
+                            priceFormat: {
+                                type: 'volume',
+                            },
+                            priceScaleId: '',
+                        });
+
+
                         candlestickSeries.setData([
                             // 这里是你的数据，格式为{ time: 'yyyy-mm-dd', open: number, high: number, low: number, close: number }
                             {
@@ -269,6 +310,21 @@ const TradeChart = () => {
                                 close: 172.79
                             },
                         ]);
+
+                        chartRef.current.priceScale('').applyOptions({
+                            scaleMargins: {
+                                top: 0.9,
+                                bottom: 0,
+                            },
+                        });
+
+
+
+                        const volumeTestData = generateVolumeTestData();
+
+                        console.log(volumeTestData);
+
+                        volumeSeries.setData(volumeTestData);
                     }
                 }
             }

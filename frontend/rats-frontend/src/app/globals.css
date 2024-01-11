@@ -25,3 +25,19 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.chart-container {
+  width: calc(50% - 4px);
+  height: calc(50vh - 4px);
+  padding: 20px;
+}
+
+.chart-page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: calc(88vh - 4px);
+  width: calc(100% - 4px);
+  padding: 50px;
+}

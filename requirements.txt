@@ -5,3 +5,4 @@ xgboost==1.7.5
 uvicorn
 python-multipart
 scikit-learn
+psycopg2

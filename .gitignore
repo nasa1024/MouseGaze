@@ -11,3 +11,6 @@ __pycache__/
 
 # config
 conf/config.ini
+
+# sql
+*.pgsql

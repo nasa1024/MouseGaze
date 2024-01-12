@@ -4,3 +4,4 @@ numpy==1.20.3
 xgboost==1.7.5
 uvicorn
 python-multipart
+scikit-learn

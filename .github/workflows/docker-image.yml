@@ -27,4 +27,4 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: evilharry1024/mouse-gaze:$(date +%s)
+        tags: evilharry1024/mouse-gaze:latest

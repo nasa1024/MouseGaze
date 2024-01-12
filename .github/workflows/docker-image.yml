@@ -41,6 +41,7 @@ jobs:
         ssh ubuntu@${{ secrets.IP }} << 'EOF'
         sudo docker stop rats mouse || true
         sudo docker rm rats mouse || true
+        sudo docker pull evilharry1024/mouse-gaze:latest
         sudo docker run --name rats -d -p 8002:8000 -v /home/ubuntu/mousegaze/conf/config.ini:/app/conf/config.ini evilharry1024/mouse-gaze uvicorn cmd.rats.rats:app --host 0.0.0.0 --port 8000
         sudo docker run --name mouse -d -p 8001:8000 -v /home/ubuntu/mousegaze/resource:/app/resource evilharry1024/mouse-gaze uvicorn cmd.mouse.mouse:app --host 0.0.0.0 --port 8000
         EOF

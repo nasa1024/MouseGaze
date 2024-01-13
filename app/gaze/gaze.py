@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from typing import List
 from model.spot import get_btcusdt_in_time_range
-from model.db import get_db
+from model.db import SessionLocal
 import time
 from controller.spot import get_klines_from_time
 import pandas as pd
@@ -19,7 +19,7 @@ async def price(data: List[int]) -> list:
 
     
     # 查询数据库的数据
-    with get_db() as db:
+    with SessionLocal() as db:
         record = get_btcusdt_in_time_range(db, data[0], data[1])
     return {"data": record}
 
@@ -36,7 +36,7 @@ async def markers(data: List[float]) -> list:
     data = get_klines_from_time('BTCUSDT', '15m', before_1020_min, now)
     # 判断数据库是否有数据
     for i in data:
-        with get_db() as db:
+        with SessionLocal() as db:
         # 判断数据库是否有数据
             if get_btcusdt_in_time_range(db, i[0], i[6]):
                 continue

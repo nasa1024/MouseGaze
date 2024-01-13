@@ -9,3 +9,4 @@ psycopg2==2.9.9
 sqlalchemy
 binance==0.3
 binance_connector==2.0.0
+pandas

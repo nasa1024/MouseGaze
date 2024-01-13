@@ -41,7 +41,7 @@ async def markers(data: List[float]) -> list:
             if get_btcusdt_in_time_range(db, i[0], i[6]):
                 continue
             # 插入数据
-            insert_btcusdt(get_db, {
+            insert_btcusdt(db, {
                 'open_time': i[0],
                 'open': i[1],
                 'high': i[2],

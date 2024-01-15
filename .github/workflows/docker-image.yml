@@ -19,6 +19,7 @@ jobs:
     - name: Login to DockerHub
       uses: docker/login-action@v1 
       with:
+        registry: sgccr.ccs.tencentyun.com
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_PWD }}
     - name: Build and push

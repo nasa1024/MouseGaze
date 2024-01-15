@@ -28,7 +28,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: sgccr.ccs.tencentyun.com/mouse-gaze:latest
+        tags: sgccr.ccs.tencentyun.com/mousegaze/mouse-gaze:latest
     # - name: Install SSH client
     #   run: |
     #     sudo apt-get update
